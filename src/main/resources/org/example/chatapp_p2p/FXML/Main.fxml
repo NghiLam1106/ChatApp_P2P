@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane fx:id="rootStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="873.0" stylesheets="@../CSS/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chatapp_p2p.Interfaces.MainController">
+<StackPane fx:id="rootStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="873.0" stylesheets="@../CSS/fullpackstyling.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.chatapp_p2p.Interfaces.MainController">
     <children>
 <AnchorPane fx:id="rootAnchorPane" prefHeight="651.0" prefWidth="858.0" styleClass="AnchorPane" stylesheets="@../CSS/fullpackstyling.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -293,20 +278,20 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-                  <JFXButton onAction="#About" prefHeight="50.0" prefWidth="76.0" text=" ">
-                     <graphic>
-                        <FontAwesomeIcon fill="WHITE" iconName="QUESTION" size="2em" />
-                     </graphic>
-                     <VBox.margin>
-                        <Insets top="120.0" />
-                     </VBox.margin>
-                  </JFXButton>
+<!--                  <JFXButton onAction="#About" prefHeight="50.0" prefWidth="76.0" text=" ">-->
+<!--                     <graphic>-->
+<!--                        <FontAwesomeIcon fill="WHITE" iconName="QUESTION" size="2em" />-->
+<!--                     </graphic>-->
+<!--                     <VBox.margin>-->
+<!--                        <Insets top="120.0" />-->
+<!--                     </VBox.margin>-->
+<!--                  </JFXButton>-->
             <JFXButton alignment="CENTER" onAction="#LogOut" prefHeight="50.0" prefWidth="76.0" text=" ">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" iconName="SIGN_OUT" rotate="180.0" size="2em" />
                </graphic>
                <VBox.margin>
-                  <Insets />
+                  <Insets top="160.0" />
                </VBox.margin>
             </JFXButton>
          </children>

@@ -203,7 +203,7 @@ public class serveurMt extends Thread
             CennectionClass cennectionClass=new CennectionClass() ;
             System.out.println(name);
             User user = cennectionClass.SearchUserInfo(name);
-            result = cennectionClass.AddFile("annuair",user.getUsername(),f,user.getIp(),user.getPort(),user.getStatus()) ;
+            result = cennectionClass.AddFile("file",user.getUsername(),f,user.getIp(),user.getPort(),user.getStatus()) ;
 
         }
         public ArrayList<Ressource> getListRess()

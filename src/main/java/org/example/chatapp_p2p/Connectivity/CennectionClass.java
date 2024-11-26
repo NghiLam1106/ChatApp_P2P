@@ -41,7 +41,7 @@ public class CennectionClass {
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * FROM annuair");
+            ResultSet set = statement.executeQuery("SELECT * FROM file");
             while (set.next()) {
                 list.add(new Ressource(
                         set.getString("filename"),
@@ -142,7 +142,7 @@ public class CennectionClass {
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * FROM annuair WHERE filename = '" + filename + "'");
+            ResultSet set = statement.executeQuery("SELECT * FROM file WHERE filename = '" + filename + "'");
 
             while (set.next()) {
                 ressource = new Ressource(set.getString("filename"),
@@ -167,7 +167,7 @@ public class CennectionClass {
             connection = getConnection();
             Statement statement = connection.createStatement();
             statement.executeUpdate("UPDATE users SET status ='Offline' WHERE username = '" + cond + "'");
-            statement.executeUpdate("UPDATE annuair SET status ='Offline' WHERE username = '" + cond + "'");
+            statement.executeUpdate("UPDATE file SET status ='Offline' WHERE username = '" + cond + "'");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -179,8 +179,8 @@ public class CennectionClass {
         try {
             connection = getConnection();
             Statement statement = connection.createStatement();
-            statement.executeUpdate("UPDATE users SET status ='En Ligne' WHERE username = '" + cond + "'");
-            statement.executeUpdate("UPDATE annuair SET status ='En Ligne' WHERE username = '" + cond + "'");
+            statement.executeUpdate("UPDATE users SET status ='Online' WHERE username = '" + cond + "'");
+            statement.executeUpdate("UPDATE file SET status ='Online' WHERE username = '" + cond + "'");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -192,7 +192,7 @@ public class CennectionClass {
 
         String sql = null;
 
-        sql = "DELETE FROM annuair WHERE filename='" + filename + "' AND username='"+nameuser+"'";
+        sql = "DELETE FROM file WHERE filename='" + filename + "' AND username='"+nameuser+"'";
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
@@ -225,7 +225,7 @@ public class CennectionClass {
     public  int count(String filename) {
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  COUNT('filename') FROM annuair WHERE filename='"+filename+"'");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  COUNT('filename') FROM file WHERE filename='"+filename+"'");
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next())
             {
@@ -244,7 +244,7 @@ public class CennectionClass {
         try {
             Connection connection = getConnection();
             Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT  DISTINCT filename FROM annuair");
+            ResultSet set = statement.executeQuery("SELECT  DISTINCT filename FROM file");
             while (set.next())
             {
                 list.add(set.getString("filename")) ;
@@ -277,7 +277,7 @@ public class CennectionClass {
 
         try {
             Connection connection = getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  COUNT('filename') FROM annuair");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  COUNT('filename') FROM file");
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next())
             {

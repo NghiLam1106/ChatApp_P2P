@@ -61,7 +61,7 @@ public class loginController
         {
             try
             {
-                connectionSocket =new Socket("192.168.20.69" ,9191) ;
+                connectionSocket =new Socket("localhost" ,9191) ;
 
 
                 OutputStream os = connectionSocket.getOutputStream() ;
@@ -77,7 +77,7 @@ public class loginController
 
                 /*------------------Creat New User ---------------*/
                 username =usernameTextField.getText() ;
-                String password =passTextField.getText();
+                String password =passwordTextField.getText();
                 /*------------------------------------------------------*/
 
                 User u = new User(username,null,password,null,0,null) ;

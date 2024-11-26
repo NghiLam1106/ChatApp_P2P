@@ -134,8 +134,8 @@ public class MainController  implements Initializable
         BoxBlur boxBlur = new BoxBlur(3,3,3) ;
         JFXButton Okey = new JFXButton("Okey") ;
         JFXDialogLayout layout = new JFXDialogLayout() ;
-        ImageView imageView = new ImageView(new Image("/org/example/chatapp_p2p//org/example/chatapp_p2p/Ressources/Logo.png",50,50,true,false)) ;
-
+        ImageView imageView = new ImageView(new Image(getClass().getResource("/org/example/chatapp_p2p/Ressources/Logo.png").toExternalForm())) ;
+//        getClass().getResource("/org/example/chatapp_p2p//org/example/chatapp_p2p/Ressources/Logo.png",50,50,true,false).toExternalForm()
 
         Okey.getStyleClass().add("dialogButtonYes") ;
         layout.setActions(Okey);
@@ -567,7 +567,7 @@ public class MainController  implements Initializable
             }
             else
                 {
-                    if (status.equals("En Ligne"))
+                    if (status.equals("Online"))
                     {
                         try
                         {
@@ -722,7 +722,7 @@ public class MainController  implements Initializable
         HomePane.setVisible(false);
         ShearPane.setVisible(false);
 
-        imageMessanger.setImage(new Image((getClass().getResource("/org/example/chatapp_p2p/Ressources/messenger.png").toExternalForm())));
+        imageMessanger.setImage(new Image((getClass().getResource("/org/example/chatapp_p2p/Ressources/messengerd.png").toExternalForm())));
         mssengerBtn.getStyleClass().removeAll("btn") ;
         mssengerBtn.getStyleClass().add("btn-not") ;
 
@@ -822,7 +822,7 @@ public class MainController  implements Initializable
         try
         {
             User u = (User) ois.readObject();
-            if (u.getStatus().equals("En Ligne"))
+            if (u.getStatus().equals("Online"))
             {
                 portUser2 = u.getPort() ;
                 ipUser2 = u.getIp() ;

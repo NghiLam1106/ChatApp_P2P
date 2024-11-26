@@ -97,7 +97,7 @@ public class signUpController
                 /*------------------Creat New User ---------------*/
                 String username =usernameTextField.getText() ;
                 String email =emailTextField.getText() ;
-                String password =passTextField.getText();
+                String password =passwordTextField.getText();
                 String ip = getIpAdresse().getHostAddress();
                 int port = Integer.parseInt(portTextField.getText());
                 /*------------------------------------------------------*/
