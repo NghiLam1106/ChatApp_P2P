@@ -1,7 +1,7 @@
 package org.example.chatapp_p2p.Interfaces;
 
 
-import org.example.chatapp_p2p.Model.User;;
+import org.example.chatapp_p2p.Model.User;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -22,7 +22,7 @@ import javax.swing.*;
 import java.io.*;
 import java.net.*;
 
-public class loginController
+public class LoginController
 {
 
     Socket connectionSocket ;
