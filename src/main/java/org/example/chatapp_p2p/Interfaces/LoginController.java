@@ -56,9 +56,13 @@ public class LoginController
 
 
         //Tester les champs
-        if (!usernameTextField.getText().isEmpty()&
-                !passwordTextField.getText().isEmpty() )
-        {
+        if (usernameTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Username is not empty!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (passwordTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Password is not empty!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
             try
             {
                 connectionSocket =new Socket("localhost" ,9191) ;

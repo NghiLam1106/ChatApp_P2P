@@ -27,7 +27,7 @@ public class serveurMt extends Thread
         try
         {
             ServerSocket ss =new ServerSocket(9191) ;
-            System.out.println("Démarage de Serveur ......");
+            System.out.println("Server start ......");
 
             while (true)
             {
@@ -73,10 +73,10 @@ public class serveurMt extends Thread
 
                 String Ip =socket.getRemoteSocketAddress().toString() ;
 
-                System.out.println("Connexion de client numéro :"+num+" , IP : "+Ip);
+                System.out.println("Số đăng nhập của người dùng :"+num+" , IP : "+Ip);
                 pw.println(num);
 
-                /*---Reception d'un client ---------------------------------*/
+                /*---Tiếp đón một khách hàng ---------------------------------*/
                 while (true)
                 {
                     int acces = Integer.parseInt(bis.readLine());

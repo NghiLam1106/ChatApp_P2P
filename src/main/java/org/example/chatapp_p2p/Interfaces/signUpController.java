@@ -67,69 +67,80 @@ public class signUpController
         return null ;
     }
     @FXML
-    void SignUp()
-    {
+    void SignUp() {
         ValidationSupport validationSupport = new ValidationSupport();
-        validationSupport.registerValidator(usernameTextField, Validator.createEmptyValidator("Username is Required")) ;
-        validationSupport.registerValidator(emailTextField, Validator.createEmptyValidator("Email is Required")) ;
-        validationSupport.registerValidator(passwordTextField, Validator.createEmptyValidator("password is Required")) ;
-
-
-        if (!usernameTextField.getText().isEmpty()&
-                !passwordTextField.getText().isEmpty()&
-                   !emailTextField.getText().isEmpty() )
-        {
-            try
-            {
-
-                Socket s =new Socket("localhost" ,9191) ;
-
-                InputStream is =s.getInputStream();
-                InputStreamReader isr =new InputStreamReader(is) ;
-                BufferedReader bf =new BufferedReader(isr) ;
-                ObjectInputStream ois = new ObjectInputStream(is);
-
-                OutputStream os =s.getOutputStream() ;
-                PrintWriter pw =new PrintWriter(os,true) ;
-                ObjectOutputStream oos = new ObjectOutputStream(os);
-
-
-                /*------------------Creat New User ---------------*/
-                String username =usernameTextField.getText() ;
-                String email =emailTextField.getText() ;
-                String password =passwordTextField.getText();
-                String ip = getIpAdresse().getHostAddress();
-                int port = Integer.parseInt(portTextField.getText());
-                /*------------------------------------------------------*/
-
-                User u = new User(username,email,password,ip,port,"Offline") ;
-
-                //Read id
-                bf.readLine();
-
-                // <<1>> means that this is a registration request ==> For the server
-                pw.println(1);
-
-                //then we send the user  information to the server to add it in the data base
-                oos.writeObject(u);
-
-                //Get the reponse from server
-                String reponse = bf.readLine();
-                if (reponse.equals("false"))
+        validationSupport.registerValidator(usernameTextField, Validator.createEmptyValidator("Username is Required"));
+        validationSupport.registerValidator(emailTextField, Validator.createEmptyValidator("Email is Required"));
+        validationSupport.registerValidator(passwordTextField, Validator.createEmptyValidator("password is Required"));
+        if (usernameTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Username is not empty!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (emailTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Email is not empty!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (!emailTextField.getText().isEmpty()) {
+            String emailRegex = "^[\\w-\\.+]+@[a-zA-Z\\d-]+\\.[a-zA-Z]{2,6}$";
+            if(!emailTextField.getText().matches(emailRegex)) {
+                JOptionPane.showMessageDialog(null, "Email format is invalid!",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try
                 {
-                    showToast();
+
+                    Socket s =new Socket("localhost" ,9191) ;
+
+                    InputStream is =s.getInputStream();
+                    InputStreamReader isr =new InputStreamReader(is) ;
+                    BufferedReader bf =new BufferedReader(isr) ;
+                    ObjectInputStream ois = new ObjectInputStream(is);
+
+                    OutputStream os =s.getOutputStream() ;
+                    PrintWriter pw =new PrintWriter(os,true) ;
+                    ObjectOutputStream oos = new ObjectOutputStream(os);
+
+
+                    /*------------------Creat New User ---------------*/
+                    String username =usernameTextField.getText() ;
+                    String email =emailTextField.getText() ;
+                    String password =passwordTextField.getText();
+                    String ip = getIpAdresse().getHostAddress();
+                    int port = Integer.parseInt(portTextField.getText());
+                    /*------------------------------------------------------*/
+
+                    User u = new User(username,email,password,ip,port,"Offline") ;
+
+                    //Read id
+                    bf.readLine();
+
+                    // <<1>> means that this is a registration request ==> For the server
+                    pw.println(1);
+
+                    //then we send the user  information to the server to add it in the data base
+                    oos.writeObject(u);
+
+                    //Get the reponse from server
+                    String reponse = bf.readLine();
+                    if (reponse.equals("false"))
+                    {
+                        showToast();
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null,"Username  exists, try another one !",
+                                "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
-                else
+                catch (IOException e)
                 {
-                    JOptionPane.showMessageDialog(null,"Username  exists, try another one !",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                    System.out.println(e.getMessage());
                 }
             }
-            catch (IOException e)
-            {
-                System.out.println(e.getMessage());
-            }
+
+        } else if (passwordTextField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Password is not empty!",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
     /*---------------------------------------------------------------------------------*/
