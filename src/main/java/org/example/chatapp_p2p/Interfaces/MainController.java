@@ -71,10 +71,6 @@ public class MainController  implements Initializable
     public static int portUser2 ;
     public static String ipUser2 ;
     public  static String NameFile ;
-//    URL src = getClass().getResource("messageNotif.mp3") ;
-//    AudioClip clipMessageNotif = new AudioClip(src.toString()) ;
-//    URL src2 =getClass().getResource("request.mp3") ;
-//    AudioClip clipRequestNotif = new AudioClip(src2.toString()) ;
 
 
 
@@ -736,7 +732,12 @@ public class MainController  implements Initializable
     @FXML
     void quitChat(ActionEvent event)
     {
-
+//        AudioCallBtn.setDisable(true);
+//        vedioCallBtn.setDisable(true);
+//        vectorImage.setVisible(true);
+//        message.setVisible(false);
+//        usernameLabel.setVisible(false);
+//        textFielMessage.setEditable(false);
     }
     /*-----------------Get list of users from server-------------------*/
     public ObservableList<String> getListUser()
@@ -1438,7 +1439,10 @@ public class MainController  implements Initializable
     }
     public void iniAudioClient(String ip ,int port)
     {
+        // Lấy định dạng âm thanh
         AudioFormat format = getaudioFormat() ;
+
+        // Kiểm tra hỗ trợ thiết bị
         DataLine.Info info= new DataLine.Info(TargetDataLine.class,format) ;
         if (!AudioSystem.isLineSupported(info))
         {
@@ -1447,9 +1451,12 @@ public class MainController  implements Initializable
         }
         try
         {
+            // Lấy dòng âm thanh
             audio_in = (TargetDataLine) AudioSystem.getLine(info) ;
             audio_in.open(format);
             audio_in.start();
+
+            // Thiết lập và khởi chạy luồng gửi âm thanh
             record_Thread r = new record_Thread();
             InetAddress inet = InetAddress.getByName(ip) ;
             r.audio_in = audio_in ;

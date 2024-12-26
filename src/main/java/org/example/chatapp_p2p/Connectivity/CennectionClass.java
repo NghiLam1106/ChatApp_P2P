@@ -141,8 +141,11 @@ public class CennectionClass {
         CennectionClass cennectionClass = new CennectionClass();
         try {
             Connection connection = getConnection();
-            Statement statement = connection.createStatement();
-            ResultSet set = statement.executeQuery("SELECT * FROM file WHERE filename = '" + filename + "'");
+//            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM file WHERE filename LIKE ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, "%" + filename + "%");
+            ResultSet set = preparedStatement.executeQuery();
 
             while (set.next()) {
                 ressource = new Ressource(set.getString("filename"),
