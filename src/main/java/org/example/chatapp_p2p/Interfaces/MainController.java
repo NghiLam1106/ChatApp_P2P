@@ -891,6 +891,15 @@ public class MainController  implements Initializable
                         }
 
                     });
+
+                    textFielMessage.setOnAction(event -> {
+                        if (!message.getText().isEmpty()) {
+                            String message = textFielMessage.getText();
+                            textFielMessage.clear();
+                            pw.println(message);
+                            addNodeFxMethodRight(message);
+                        }
+                    });
                 }
                 else
                 {
